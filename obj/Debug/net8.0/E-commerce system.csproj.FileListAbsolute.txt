@@ -1,0 +1,45 @@
+E:\SLIIT\4th Year\2nd Sem\EAD\E-commerce system\bin\Debug\net8.0\appsettings.Development.json
+E:\SLIIT\4th Year\2nd Sem\EAD\E-commerce system\bin\Debug\net8.0\appsettings.json
+E:\SLIIT\4th Year\2nd Sem\EAD\E-commerce system\bin\Debug\net8.0\E-commerce system.exe
+E:\SLIIT\4th Year\2nd Sem\EAD\E-commerce system\bin\Debug\net8.0\E-commerce system.deps.json
+E:\SLIIT\4th Year\2nd Sem\EAD\E-commerce system\bin\Debug\net8.0\E-commerce system.runtimeconfig.json
+E:\SLIIT\4th Year\2nd Sem\EAD\E-commerce system\bin\Debug\net8.0\E-commerce system.dll
+E:\SLIIT\4th Year\2nd Sem\EAD\E-commerce system\bin\Debug\net8.0\E-commerce system.pdb
+E:\SLIIT\4th Year\2nd Sem\EAD\E-commerce system\bin\Debug\net8.0\AWSSDK.Core.dll
+E:\SLIIT\4th Year\2nd Sem\EAD\E-commerce system\bin\Debug\net8.0\AWSSDK.SecurityToken.dll
+E:\SLIIT\4th Year\2nd Sem\EAD\E-commerce system\bin\Debug\net8.0\DnsClient.dll
+E:\SLIIT\4th Year\2nd Sem\EAD\E-commerce system\bin\Debug\net8.0\Microsoft.OpenApi.dll
+E:\SLIIT\4th Year\2nd Sem\EAD\E-commerce system\bin\Debug\net8.0\MongoDB.Bson.dll
+E:\SLIIT\4th Year\2nd Sem\EAD\E-commerce system\bin\Debug\net8.0\MongoDB.Driver.dll
+E:\SLIIT\4th Year\2nd Sem\EAD\E-commerce system\bin\Debug\net8.0\MongoDB.Driver.Core.dll
+E:\SLIIT\4th Year\2nd Sem\EAD\E-commerce system\bin\Debug\net8.0\MongoDB.Libmongocrypt.dll
+E:\SLIIT\4th Year\2nd Sem\EAD\E-commerce system\bin\Debug\net8.0\SharpCompress.dll
+E:\SLIIT\4th Year\2nd Sem\EAD\E-commerce system\bin\Debug\net8.0\Snappier.dll
+E:\SLIIT\4th Year\2nd Sem\EAD\E-commerce system\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+E:\SLIIT\4th Year\2nd Sem\EAD\E-commerce system\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+E:\SLIIT\4th Year\2nd Sem\EAD\E-commerce system\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+E:\SLIIT\4th Year\2nd Sem\EAD\E-commerce system\bin\Debug\net8.0\ZstdSharp.dll
+E:\SLIIT\4th Year\2nd Sem\EAD\E-commerce system\bin\Debug\net8.0\runtimes\linux\native\libmongocrypt.so
+E:\SLIIT\4th Year\2nd Sem\EAD\E-commerce system\bin\Debug\net8.0\runtimes\osx\native\libmongocrypt.dylib
+E:\SLIIT\4th Year\2nd Sem\EAD\E-commerce system\bin\Debug\net8.0\runtimes\win\native\mongocrypt.dll
+E:\SLIIT\4th Year\2nd Sem\EAD\E-commerce system\obj\Debug\net8.0\E-commerce system.csproj.AssemblyReference.cache
+E:\SLIIT\4th Year\2nd Sem\EAD\E-commerce system\obj\Debug\net8.0\E-commerce system.GeneratedMSBuildEditorConfig.editorconfig
+E:\SLIIT\4th Year\2nd Sem\EAD\E-commerce system\obj\Debug\net8.0\E-commerce system.AssemblyInfoInputs.cache
+E:\SLIIT\4th Year\2nd Sem\EAD\E-commerce system\obj\Debug\net8.0\E-commerce system.AssemblyInfo.cs
+E:\SLIIT\4th Year\2nd Sem\EAD\E-commerce system\obj\Debug\net8.0\E-commerce system.csproj.CoreCompileInputs.cache
+E:\SLIIT\4th Year\2nd Sem\EAD\E-commerce system\obj\Debug\net8.0\E-commerce system.MvcApplicationPartsAssemblyInfo.cs
+E:\SLIIT\4th Year\2nd Sem\EAD\E-commerce system\obj\Debug\net8.0\E-commerce system.MvcApplicationPartsAssemblyInfo.cache
+E:\SLIIT\4th Year\2nd Sem\EAD\E-commerce system\obj\Debug\net8.0\staticwebassets.build.json
+E:\SLIIT\4th Year\2nd Sem\EAD\E-commerce system\obj\Debug\net8.0\staticwebassets.development.json
+E:\SLIIT\4th Year\2nd Sem\EAD\E-commerce system\obj\Debug\net8.0\staticwebassets\msbuild.E-commerce system.Microsoft.AspNetCore.StaticWebAssets.props
+E:\SLIIT\4th Year\2nd Sem\EAD\E-commerce system\obj\Debug\net8.0\staticwebassets\msbuild.build.E-commerce system.props
+E:\SLIIT\4th Year\2nd Sem\EAD\E-commerce system\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.E-commerce system.props
+E:\SLIIT\4th Year\2nd Sem\EAD\E-commerce system\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.E-commerce system.props
+E:\SLIIT\4th Year\2nd Sem\EAD\E-commerce system\obj\Debug\net8.0\staticwebassets.pack.json
+E:\SLIIT\4th Year\2nd Sem\EAD\E-commerce system\obj\Debug\net8.0\scopedcss\bundle\E-commerce system.styles.css
+E:\SLIIT\4th Year\2nd Sem\EAD\E-commerce system\obj\Debug\net8.0\E-commer.315B8F20.Up2Date
+E:\SLIIT\4th Year\2nd Sem\EAD\E-commerce system\obj\Debug\net8.0\E-commerce system.dll
+E:\SLIIT\4th Year\2nd Sem\EAD\E-commerce system\obj\Debug\net8.0\refint\E-commerce system.dll
+E:\SLIIT\4th Year\2nd Sem\EAD\E-commerce system\obj\Debug\net8.0\E-commerce system.pdb
+E:\SLIIT\4th Year\2nd Sem\EAD\E-commerce system\obj\Debug\net8.0\E-commerce system.genruntimeconfig.cache
+E:\SLIIT\4th Year\2nd Sem\EAD\E-commerce system\obj\Debug\net8.0\ref\E-commerce system.dll
