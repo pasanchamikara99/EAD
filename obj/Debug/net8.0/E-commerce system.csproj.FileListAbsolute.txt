@@ -43,3 +43,4 @@ E:\SLIIT\4th Year\2nd Sem\EAD\E-commerce system\obj\Debug\net8.0\refint\E-commer
 E:\SLIIT\4th Year\2nd Sem\EAD\E-commerce system\obj\Debug\net8.0\E-commerce system.pdb
 E:\SLIIT\4th Year\2nd Sem\EAD\E-commerce system\obj\Debug\net8.0\E-commerce system.genruntimeconfig.cache
 E:\SLIIT\4th Year\2nd Sem\EAD\E-commerce system\obj\Debug\net8.0\ref\E-commerce system.dll
+E:\SLIIT\4th Year\2nd Sem\EAD\E-commerce system\obj\Debug\net8.0\E-commerce system.sourcelink.json
