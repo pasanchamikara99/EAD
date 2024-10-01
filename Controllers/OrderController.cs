@@ -17,12 +17,14 @@ namespace E_commerce_system.Controllers
             _orders = mongoDbService.Database?.GetCollection<Order>("order");
         }
 
+        //Get all Orders
         [HttpGet]
         public async Task<IEnumerable<Order>> Get()
         {
             return await _orders.Find(FilterDefinition<Order>.Empty).ToListAsync();
         }
 
+        //Create Order
         [HttpPost]
         public async Task<ActionResult> Post(Order order)
         {
@@ -30,6 +32,7 @@ namespace E_commerce_system.Controllers
             return CreatedAtAction(nameof(GetById), new { id = order.Id }, order);
         }
 
+        //Get Order by Id
         [HttpGet("{id}")]
         public async Task<ActionResult<Order?>> GetById(string id)
         {
@@ -38,6 +41,7 @@ namespace E_commerce_system.Controllers
             return order is not null ? Ok(order) : NotFound();
         }
 
+        //Update Order if not delivered or dispatched yet
         [HttpPut("{id}")]
         public async Task<ActionResult> Put(string id, Order order)
         {
@@ -61,6 +65,7 @@ namespace E_commerce_system.Controllers
             return result.IsAcknowledged ? Ok(order) : NotFound();
         }
 
+        //Detele Order
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(string id)
         {
@@ -69,7 +74,7 @@ namespace E_commerce_system.Controllers
             return result.IsAcknowledged ? Ok() : NotFound();
         }
 
-        //cancel order if not delivered or dispatched
+        //Cancel order if not delivered or dispatched yet
         [HttpPut("{id}/cancel")]
         public async Task<ActionResult> CancelOrder(string id)
         {

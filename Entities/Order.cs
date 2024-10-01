@@ -3,6 +3,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace E_commerce_system.Entities
 {
+    //Order class to represent an order
     public class Order
     {
         [BsonId]
@@ -32,6 +33,5 @@ namespace E_commerce_system.Entities
         //Order Items as an array
         //[BsonElement("order_items"), BsonRepresentation(BsonType.String)]
         //public List<string>? OrderItems { get; set; }
-
     }
 }
