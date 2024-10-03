@@ -1,4 +1,5 @@
 using E_commerce_system.Data;
+using E_commerce_system.Data.Services; 
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<MongoDbService>();
+
+builder.Services.AddScoped<IVendorService>(sp => {
+    var mongoDbService = sp.GetRequiredService<MongoDbService>();
+    return new VendorService(mongoDbService.Database);
+});
 
 var app = builder.Build();
 
