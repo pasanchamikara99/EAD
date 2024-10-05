@@ -28,6 +28,9 @@ namespace E_commerce_system.Controllers
         [HttpPost]
         public async Task<ActionResult> Post(Order order)
         {
+            //print order details
+            Console.WriteLine(order);
+
             await _orders.InsertOneAsync(order);
             return CreatedAtAction(nameof(GetById), new { id = order.Id }, order);
         }
@@ -43,26 +46,31 @@ namespace E_commerce_system.Controllers
 
         //Update Order if not delivered or dispatched yet
         [HttpPut("{id}")]
-        public async Task<ActionResult> Put(string id, Order order)
+        public async Task<ActionResult> Put(string id, Order neworder)
         {
             var filter = Builders<Order>.Filter.Eq(x => x.Id, id);
+            var order = await _orders.Find(filter).FirstOrDefaultAsync();
             if (order is null)
             {
                 return NotFound();
             }
-            if (order.Status == "Delivered" || order.Status == "Dispatched")
+            if (order.Status == "Delivered")
             {
-                return BadRequest("Cannot update order");
+                return BadRequest("Order is delivered, cannot update order");
+            }
+            if (order.Status == "Dispatched")
+            {
+                return BadRequest("Order is dispatched, cannot update order");
             }
             var update = Builders<Order>.Update
-                .Set(x => x.UserId, order.UserId)
-                .Set(x => x.ShippingAddress, order.ShippingAddress)
-                .Set(x => x.Status, order.Status)
-                .Set(x => x.OrderDate, order.OrderDate)
-                //.Set(x => x.OrderItems, order.OrderItems)
-                .Set(x => x.OrderTotal, order.OrderTotal);
+                .Set(x => x.UserId, neworder.UserId)
+                .Set(x => x.ShippingAddress, neworder.ShippingAddress)
+                .Set(x => x.Status, neworder.Status)
+                .Set(x => x.OrderDate, neworder.OrderDate)
+                //.Set(x => x.OrderItems, neworder.OrderItems)
+                .Set(x => x.OrderTotal, neworder.OrderTotal);
             var result = await _orders.UpdateOneAsync(filter, update);
-            return result.IsAcknowledged ? Ok(order) : NotFound();
+            return result.IsAcknowledged ? Ok(neworder) : NotFound();
         }
 
         //Detele Order
@@ -84,15 +92,79 @@ namespace E_commerce_system.Controllers
             {
                 return NotFound();
             }
-            if (order.Status == "Delivered" || order.Status == "Dispatched")
+            if (order.Status == "Delivered")
             {
-                return BadRequest("Cannot cancel order");
+                return BadRequest("Order is delivered, cannot cancel order");
+            }
+            if (order.Status == "Dispatched")
+            {
+                return BadRequest("Order is dispatched, cannot cancel order");
             }
             var update = Builders<Order>.Update.Set(x => x.Status, "Cancelled");
             var result = await _orders.UpdateOneAsync(filter, update);
             return result.IsAcknowledged ? Ok() : NotFound();
 
         }
+
+        //Mark order as delivered
+        [HttpPut("{id}/delivered")]
+        public async Task<ActionResult> MarkAsDelivered(string id)
+        {
+            var filter = Builders<Order>.Filter.Eq(x => x.Id, id);
+            var order = await _orders.Find(filter).FirstOrDefaultAsync();
+            if (order is null)
+            {
+                return NotFound();
+            }
+            if (order.Status == "Cancelled")
+            {
+                return BadRequest("Order is cancelled cannot mark as delivered");
+            }
+            var update = Builders<Order>.Update.Set(x => x.Status, "Delivered");
+            var result = await _orders.UpdateOneAsync(filter, update);
+            return result.IsAcknowledged ? Ok() : NotFound();
+        }
+
+        //Mark order as dispatched
+        [HttpPut("{id}/dispatched")]
+        public async Task<ActionResult> MarkAsDispatched(string id)
+        {
+            var filter = Builders<Order>.Filter.Eq(x => x.Id, id);
+            var order = await _orders.Find(filter).FirstOrDefaultAsync();
+            if (order is null)
+            {
+                return NotFound();
+            }
+            if (order.Status == "Cancelled")
+            {
+                return BadRequest("Order is cancelled cannot mark as dispatched");
+            }
+            var update = Builders<Order>.Update.Set(x => x.Status, "Dispatched");
+            var result = await _orders.UpdateOneAsync(filter, update);
+            return result.IsAcknowledged ? Ok() : NotFound();
+        }
+
+        //View only specific user orders
+        [HttpGet("user/{userId}")]
+        public async Task<IEnumerable<Order>> GetUserOrders(string userId)
+        {
+            var filter = Builders<Order>.Filter.Eq(x => x.UserId, userId);
+            var order = await _orders.Find(filter).FirstOrDefaultAsync();
+
+            if (order is null)
+            {
+                return null;
+            }
+            return await _orders.Find(filter).ToListAsync();
+        }
+
+        //View only specific vender orders
+        //[HttpGet("vendor/{vendorId}")]
+        //public async Task<IEnumerable<Order>> GetVendorOrders(string vendorId)
+        //{
+        //    var filter = Builders<Order>.Filter.Eq(x => x.OrderItems.Any(x => x.VendorId == vendorId));
+        //    return await _orders.Find(filter).ToListAsync();
+        //}
 
     }
 }

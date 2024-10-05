@@ -30,8 +30,8 @@ namespace E_commerce_system.Entities
         [BsonElement("order_total"), BsonRepresentation(BsonType.Decimal128)]
         public decimal OrderTotal { get; set; }
 
-        //Order Items as an array
-        //[BsonElement("order_items"), BsonRepresentation(BsonType.String)]
-        //public List<string>? OrderItems { get; set; }
+
+        //[BsonElement("order_items")]
+        //public List<OrderItems>? OrderItems { get; set; }
     }
 }
