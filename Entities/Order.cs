@@ -31,7 +31,7 @@ namespace E_commerce_system.Entities
         public decimal OrderTotal { get; set; }
 
 
-        //[BsonElement("order_items")]
-        //public List<OrderItems>? OrderItems { get; set; }
+        [BsonElement("order_items")]
+        public List<OrderItems>? OrderItems { get; set; }
     }
 }
