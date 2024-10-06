@@ -13,6 +13,9 @@ namespace E_commerce_system.Data.Services
         Task<bool> AddRatingAsync(string vendorId, VendorRating rating);
         Task<bool> UpdateCommentAsync(string vendorId, string customerId, string newComment);
         Task<List<VendorRating>> GetVendorRatingsAsync(string vendorId);
+        Task<bool> IsEmailInUseAsync(string email);
+
+        Task<Vendor> GetVendorByEmail(string email);
     }
 
     public class VendorService : IVendorService
@@ -59,6 +62,7 @@ namespace E_commerce_system.Data.Services
             return result.ModifiedCount > 0;
         }
 
+
         public async Task<bool> UpdateCommentAsync(string vendorId, string customerId, string newComment)
         {
             var vendor = await GetVendorByIdAsync(vendorId);
@@ -79,6 +83,16 @@ namespace E_commerce_system.Data.Services
         {
             var vendor = await GetVendorByIdAsync(vendorId);
             return vendor?.Ratings ?? new List<VendorRating>();
+        }
+
+        public async Task<bool> IsEmailInUseAsync(string email)
+        {
+            return await _vendors.Find(v => v.Email == email).AnyAsync();
+        }
+
+        public async Task<Vendor> GetVendorByEmail(string email)
+        {
+            return await _vendors.Find(v => v.Email == email).FirstOrDefaultAsync();
         }
     }
 }

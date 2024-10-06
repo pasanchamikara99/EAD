@@ -165,6 +165,32 @@
     ]
   },
   {
+    "ContainingType": "E_commerce_system.Controllers.VendorController",
+    "Method": "LoginVendor",
+    "RelativePath": "api/Vendor/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "vendorDto",
+        "Type": "E_commerce_system.DTO.LoginDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "E_commerce_system.Data.Entities.Vendor",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "E_commerce_system.Controllers.CustomerController",
     "Method": "DeactivateAccount",
     "RelativePath": "deactivate/{customerId}",

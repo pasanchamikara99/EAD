@@ -94,6 +94,7 @@ using E_commerce_system.Data.Entities;
 using E_commerce_system.Data.Services;
 using E_commerce_system.Data.DTO;
 using Microsoft.AspNetCore.Authorization;
+using E_commerce_system.DTO;
 
 namespace E_commerce_system.Controllers
 {
@@ -128,12 +129,20 @@ namespace E_commerce_system.Controllers
         //[Authorize(Roles = "Administrator")] // Commented out for testing
         public async Task<ActionResult<Vendor>> CreateVendor([FromBody] CreateVendorDTO vendorDto)
         {
+
+            // Check if email is already in use
+            if (await _vendorService.IsEmailInUseAsync(vendorDto.Email))
+            {
+                return BadRequest(new { message = "Email is already in use." });
+            }
+
             var vendor = new Vendor
             {
                 Name = vendorDto.Name,
                 Email = vendorDto.Email,
                 PhoneNumber = vendorDto.PhoneNumber,
-                Description = vendorDto.Description
+                Description = vendorDto.Description,
+                Password = vendorDto.Password
             };
 
             var createdVendor = await _vendorService.CreateVendorAsync(vendor);
@@ -164,5 +173,39 @@ namespace E_commerce_system.Controllers
             var ratings = await _vendorService.GetVendorRatingsAsync(vendorId);
             return Ok(ratings);
         }
+
+        [HttpPost("login")]
+        public async Task<ActionResult<Vendor>> LoginVendor([FromBody] LoginDTO vendorDto)
+        {
+
+            // Check if the vendor with the provided email exists
+            var vendor = await _vendorService.GetVendorByEmail(vendorDto.Email);
+            if (vendor == null)
+            {
+                return BadRequest(new { message = "No user found with this email." });
+            }
+
+            // Verify the password (assuming you have a method for this)
+            if (!VerifyPassword(vendorDto.Password, vendor.Password)) // Use your hashing/verification method
+            {
+                return BadRequest(new { message = "Incorrect password." });
+            }
+
+            // If both checks pass, return the vendor data (or a token, etc.)
+            return Ok(vendor);
+        }
+
+        private bool VerifyPassword(string inputPassword, string storedPassword)
+        {
+            // Implement your password verification logic here
+            // For example, if you are hashing passwords, use the same hash function to hash inputPassword
+            // and compare it with storedPassword.
+
+            return inputPassword == storedPassword; // Replace this with your actual password verification logic
+        }
+
+
+
+
     }
 }
