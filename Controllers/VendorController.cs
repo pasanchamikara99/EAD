@@ -142,7 +142,8 @@ namespace E_commerce_system.Controllers
                 Email = vendorDto.Email,
                 PhoneNumber = vendorDto.PhoneNumber,
                 Description = vendorDto.Description,
-                Password = vendorDto.Password
+                Password = vendorDto.Password,
+                UserType = "Vendor"
             };
 
             var createdVendor = await _vendorService.CreateVendorAsync(vendor);

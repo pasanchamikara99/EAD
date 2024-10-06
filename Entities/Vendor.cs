@@ -22,6 +22,9 @@ namespace E_commerce_system.Data.Entities
         [Required]
         public string Password { get; set; }
 
+        [Required]
+        public string UserType { get; set; }
+
         public string Description { get; set; }
 
         public bool IsActive { get; set; } = true;

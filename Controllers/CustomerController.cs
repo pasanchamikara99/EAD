@@ -31,14 +31,14 @@ namespace E_commerce_system.Controllers
             return customer is not null ? Ok(customer) : NotFound();
         }
 
-        [HttpPost("/register")]
+        [HttpPost("register")]
         public async Task<ActionResult> Post(Customer customer) {
             customer.Status = "InActive";
             await _customers.InsertOneAsync(customer);
             return CreatedAtAction(nameof(GetById), new { id = customer.Id} , customer);
         }
 
-        [HttpPost("/login")]
+        [HttpPost("login")]
         public async Task<ActionResult> Login(DTO.LoginDTO loginDTO)
         {
             var existingCustomer = await _customers.Find(c => c.Email == loginDTO.Email).FirstOrDefaultAsync();
@@ -62,7 +62,7 @@ namespace E_commerce_system.Controllers
         }
 
 
-        [HttpPost("/deactivate/{customerId}")]
+        [HttpPost("deactivate/{customerId}")]
         public async Task<ActionResult> DeactivateAccount(string customerId)
         {
             if (string.IsNullOrEmpty(customerId))
