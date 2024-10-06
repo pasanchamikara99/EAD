@@ -9,6 +9,10 @@ namespace E_commerce_system.Entities
         public string ProductId { get; set; }
 
 
+        [BsonElement("product_name"), BsonRepresentation(BsonType.String)]
+        public string ProductName { get; set; }
+
+
         [BsonElement("quantity"), BsonRepresentation(BsonType.Int32)]
         public int Quantity { get; set; }
 

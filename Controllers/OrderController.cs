@@ -67,7 +67,7 @@ namespace E_commerce_system.Controllers
                 .Set(x => x.ShippingAddress, neworder.ShippingAddress)
                 .Set(x => x.Status, neworder.Status)
                 .Set(x => x.OrderDate, neworder.OrderDate)
-                //.Set(x => x.OrderItems, neworder.OrderItems)
+                .Set(x => x.OrderItems, neworder.OrderItems)
                 .Set(x => x.OrderTotal, neworder.OrderTotal);
             var result = await _orders.UpdateOneAsync(filter, update);
             return result.IsAcknowledged ? Ok(neworder) : NotFound();
@@ -138,6 +138,10 @@ namespace E_commerce_system.Controllers
             if (order.Status == "Cancelled")
             {
                 return BadRequest("Order is cancelled cannot mark as dispatched");
+            }
+            if (order.Status == "Delivered")
+            {
+                return BadRequest("Order is delivered cannot mark as dispatched");
             }
             var update = Builders<Order>.Update.Set(x => x.Status, "Dispatched");
             var result = await _orders.UpdateOneAsync(filter, update);

@@ -14,5 +14,13 @@ namespace E_commerce_system.Entities
 
         [BsonElement("email"), BsonRepresentation(BsonType.String)]
         public string? Email { get; set; }
+
+        //account_status
+        [BsonElement("account_status"), BsonRepresentation(BsonType.String)]
+        public string? AccountStatus { get; set; }
+
+        //password
+        [BsonElement("password"), BsonRepresentation(BsonType.String)]
+        public string? Password { get; set; }
     }
 }
