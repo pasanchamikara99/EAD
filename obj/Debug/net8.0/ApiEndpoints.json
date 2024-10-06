@@ -46,6 +46,125 @@
     ]
   },
   {
+    "ContainingType": "E_commerce_system.Controllers.VendorController",
+    "Method": "GetAllVendors",
+    "RelativePath": "api/Vendor",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[E_commerce_system.Data.Entities.Vendor, E-commerce system, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "E_commerce_system.Controllers.VendorController",
+    "Method": "CreateVendor",
+    "RelativePath": "api/Vendor",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "vendorDto",
+        "Type": "E_commerce_system.Data.DTO.CreateVendorDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "E_commerce_system.Data.Entities.Vendor",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "E_commerce_system.Controllers.VendorController",
+    "Method": "GetVendor",
+    "RelativePath": "api/Vendor/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "E_commerce_system.Data.Entities.Vendor",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "E_commerce_system.Controllers.VendorController",
+    "Method": "AddRating",
+    "RelativePath": "api/Vendor/{vendorId}/ratings",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "vendorId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "ratingDto",
+        "Type": "E_commerce_system.Data.DTO.VendorRatingDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "E_commerce_system.Controllers.VendorController",
+    "Method": "GetVendorRatings",
+    "RelativePath": "api/Vendor/{vendorId}/ratings",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "vendorId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[E_commerce_system.Data.Entities.VendorRating, E-commerce system, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "E_commerce_system.Controllers.CustomerController",
     "Method": "DeactivateAccount",
     "RelativePath": "deactivate/{customerId}",
