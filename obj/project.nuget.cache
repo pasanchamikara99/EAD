@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "YRDrqR+bBCUrlE2BQUQT6aODrILXmDh9c3HX5cjRmzFZP/5LM4Z+MiiNKqN+8/lARjGvJsCtsuaftcaEiSyIzg==",
+  "dgSpecHash": "edcFXszhnlTGSU28Xbj6mctBLCoR4amusyXqst+QqgN5VhGugvcmE75iaOx5Z9epOYArycLmCpNaRNz6HC/WNA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\pasin\\OneDrive\\Desktop\\DotNet\\E-commerce system\\E-commerce system.csproj",
+  "projectFilePath": "C:\\Users\\pasin\\OneDrive\\Desktop\\E-commerce API system\\E-commerce system.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pasin\\.nuget\\packages\\awssdk.core\\3.7.100.14\\awssdk.core.3.7.100.14.nupkg.sha512",
     "C:\\Users\\pasin\\.nuget\\packages\\awssdk.securitytoken\\3.7.100.14\\awssdk.securitytoken.3.7.100.14.nupkg.sha512",

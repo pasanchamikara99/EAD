@@ -1214,11 +1214,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\pasin\\OneDrive\\Desktop\\DotNet\\E-commerce system\\E-commerce system.csproj",
+      "projectUniqueName": "C:\\Users\\pasin\\OneDrive\\Desktop\\E-commerce API system\\E-commerce system.csproj",
       "projectName": "E-commerce system",
-      "projectPath": "C:\\Users\\pasin\\OneDrive\\Desktop\\DotNet\\E-commerce system\\E-commerce system.csproj",
+      "projectPath": "C:\\Users\\pasin\\OneDrive\\Desktop\\E-commerce API system\\E-commerce system.csproj",
       "packagesPath": "C:\\Users\\pasin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\pasin\\OneDrive\\Desktop\\DotNet\\E-commerce system\\obj\\",
+      "outputPath": "C:\\Users\\pasin\\OneDrive\\Desktop\\E-commerce API system\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\pasin\\AppData\\Roaming\\NuGet\\NuGet.Config",
