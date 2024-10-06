@@ -44,3 +44,49 @@ E:\SLIIT\4th Year\2nd Sem\EAD\E-commerce system\obj\Debug\net8.0\E-commerce syst
 E:\SLIIT\4th Year\2nd Sem\EAD\E-commerce system\obj\Debug\net8.0\E-commerce system.genruntimeconfig.cache
 E:\SLIIT\4th Year\2nd Sem\EAD\E-commerce system\obj\Debug\net8.0\ref\E-commerce system.dll
 E:\SLIIT\4th Year\2nd Sem\EAD\E-commerce system\obj\Debug\net8.0\E-commerce system.sourcelink.json
+D:\sliit\4th_Year_2nd_Sem\EAD\EAD Project\EAD\bin\Debug\net8.0\appsettings.Development.json
+D:\sliit\4th_Year_2nd_Sem\EAD\EAD Project\EAD\bin\Debug\net8.0\appsettings.json
+D:\sliit\4th_Year_2nd_Sem\EAD\EAD Project\EAD\bin\Debug\net8.0\E-commerce system.exe
+D:\sliit\4th_Year_2nd_Sem\EAD\EAD Project\EAD\bin\Debug\net8.0\E-commerce system.deps.json
+D:\sliit\4th_Year_2nd_Sem\EAD\EAD Project\EAD\bin\Debug\net8.0\E-commerce system.runtimeconfig.json
+D:\sliit\4th_Year_2nd_Sem\EAD\EAD Project\EAD\bin\Debug\net8.0\E-commerce system.dll
+D:\sliit\4th_Year_2nd_Sem\EAD\EAD Project\EAD\bin\Debug\net8.0\E-commerce system.pdb
+D:\sliit\4th_Year_2nd_Sem\EAD\EAD Project\EAD\bin\Debug\net8.0\AWSSDK.Core.dll
+D:\sliit\4th_Year_2nd_Sem\EAD\EAD Project\EAD\bin\Debug\net8.0\AWSSDK.SecurityToken.dll
+D:\sliit\4th_Year_2nd_Sem\EAD\EAD Project\EAD\bin\Debug\net8.0\DnsClient.dll
+D:\sliit\4th_Year_2nd_Sem\EAD\EAD Project\EAD\bin\Debug\net8.0\Microsoft.OpenApi.dll
+D:\sliit\4th_Year_2nd_Sem\EAD\EAD Project\EAD\bin\Debug\net8.0\MongoDB.Bson.dll
+D:\sliit\4th_Year_2nd_Sem\EAD\EAD Project\EAD\bin\Debug\net8.0\MongoDB.Driver.dll
+D:\sliit\4th_Year_2nd_Sem\EAD\EAD Project\EAD\bin\Debug\net8.0\MongoDB.Driver.Core.dll
+D:\sliit\4th_Year_2nd_Sem\EAD\EAD Project\EAD\bin\Debug\net8.0\MongoDB.Libmongocrypt.dll
+D:\sliit\4th_Year_2nd_Sem\EAD\EAD Project\EAD\bin\Debug\net8.0\SharpCompress.dll
+D:\sliit\4th_Year_2nd_Sem\EAD\EAD Project\EAD\bin\Debug\net8.0\Snappier.dll
+D:\sliit\4th_Year_2nd_Sem\EAD\EAD Project\EAD\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\sliit\4th_Year_2nd_Sem\EAD\EAD Project\EAD\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\sliit\4th_Year_2nd_Sem\EAD\EAD Project\EAD\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\sliit\4th_Year_2nd_Sem\EAD\EAD Project\EAD\bin\Debug\net8.0\ZstdSharp.dll
+D:\sliit\4th_Year_2nd_Sem\EAD\EAD Project\EAD\bin\Debug\net8.0\runtimes\linux\native\libmongocrypt.so
+D:\sliit\4th_Year_2nd_Sem\EAD\EAD Project\EAD\bin\Debug\net8.0\runtimes\osx\native\libmongocrypt.dylib
+D:\sliit\4th_Year_2nd_Sem\EAD\EAD Project\EAD\bin\Debug\net8.0\runtimes\win\native\mongocrypt.dll
+D:\sliit\4th_Year_2nd_Sem\EAD\EAD Project\EAD\obj\Debug\net8.0\E-commerce system.csproj.AssemblyReference.cache
+D:\sliit\4th_Year_2nd_Sem\EAD\EAD Project\EAD\obj\Debug\net8.0\E-commerce system.GeneratedMSBuildEditorConfig.editorconfig
+D:\sliit\4th_Year_2nd_Sem\EAD\EAD Project\EAD\obj\Debug\net8.0\E-commerce system.AssemblyInfoInputs.cache
+D:\sliit\4th_Year_2nd_Sem\EAD\EAD Project\EAD\obj\Debug\net8.0\E-commerce system.AssemblyInfo.cs
+D:\sliit\4th_Year_2nd_Sem\EAD\EAD Project\EAD\obj\Debug\net8.0\E-commerce system.csproj.CoreCompileInputs.cache
+D:\sliit\4th_Year_2nd_Sem\EAD\EAD Project\EAD\obj\Debug\net8.0\E-commerce system.MvcApplicationPartsAssemblyInfo.cs
+D:\sliit\4th_Year_2nd_Sem\EAD\EAD Project\EAD\obj\Debug\net8.0\E-commerce system.MvcApplicationPartsAssemblyInfo.cache
+D:\sliit\4th_Year_2nd_Sem\EAD\EAD Project\EAD\obj\Debug\net8.0\E-commerce system.sourcelink.json
+D:\sliit\4th_Year_2nd_Sem\EAD\EAD Project\EAD\obj\Debug\net8.0\staticwebassets.build.json
+D:\sliit\4th_Year_2nd_Sem\EAD\EAD Project\EAD\obj\Debug\net8.0\staticwebassets.development.json
+D:\sliit\4th_Year_2nd_Sem\EAD\EAD Project\EAD\obj\Debug\net8.0\staticwebassets\msbuild.E-commerce system.Microsoft.AspNetCore.StaticWebAssets.props
+D:\sliit\4th_Year_2nd_Sem\EAD\EAD Project\EAD\obj\Debug\net8.0\staticwebassets\msbuild.build.E-commerce system.props
+D:\sliit\4th_Year_2nd_Sem\EAD\EAD Project\EAD\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.E-commerce system.props
+D:\sliit\4th_Year_2nd_Sem\EAD\EAD Project\EAD\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.E-commerce system.props
+D:\sliit\4th_Year_2nd_Sem\EAD\EAD Project\EAD\obj\Debug\net8.0\staticwebassets.pack.json
+D:\sliit\4th_Year_2nd_Sem\EAD\EAD Project\EAD\obj\Debug\net8.0\scopedcss\bundle\E-commerce system.styles.css
+D:\sliit\4th_Year_2nd_Sem\EAD\EAD Project\EAD\obj\Debug\net8.0\E-commer.315B8F20.Up2Date
+D:\sliit\4th_Year_2nd_Sem\EAD\EAD Project\EAD\obj\Debug\net8.0\E-commerce system.dll
+D:\sliit\4th_Year_2nd_Sem\EAD\EAD Project\EAD\obj\Debug\net8.0\refint\E-commerce system.dll
+D:\sliit\4th_Year_2nd_Sem\EAD\EAD Project\EAD\obj\Debug\net8.0\E-commerce system.pdb
+D:\sliit\4th_Year_2nd_Sem\EAD\EAD Project\EAD\obj\Debug\net8.0\E-commerce system.genruntimeconfig.cache
+D:\sliit\4th_Year_2nd_Sem\EAD\EAD Project\EAD\obj\Debug\net8.0\ref\E-commerce system.dll
