@@ -1,3 +1,95 @@
-.vs/
 Controllers/ProductController.cs
 Entities/Products.cs
+
+# Ignore build outputs
+bin/
+obj/
+out/
+
+# User-specific files
+*.user
+*.rsuser
+*.suo
+*.userosscache
+*.sln.docstates
+
+# User-specific folders
+.vscode/
+.vs/
+.idea/
+
+# Auto-generated files
+_Dependencies
+.project
+*.cache
+*.pdb
+*.mdb
+*.opendb
+*.log
+*.pidb
+*.sdf
+
+# Test results
+TestResults/
+*.trx
+*.coverage
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Dependency directories
+node_modules/
+packages/
+bower_components/
+
+# DotNet tools
+**/artifacts/
+**/local.packages/
+**/tools/
+**/publish/
+**/Generated/
+*/.csproj.user
+
+# Rider (JetBrains IDE) files
+.idea/
+*.sln.iml
+
+# Visual Studio temp folders and files
+.vscode/
+.vs/
+.vscode/
+.suo
+*.ncrunchsolution
+*.ncrunchproject
+*.user
+*.rsuser
+*.suo
+*.swp
+*.userprefs
+*.orig
+
+# Resharper files
+_ReSharper*/
+*.[Rr]e[Ss]harper
+
+# Configuration files
+appsettings.Development.json
+appsettings.Local.json
+appsettings.Production.json
+appsettings.Staging.json
+
+# Database files
+*.mdf
+*.ldf
+
+# Entity Framework Migrations
+Migrations/
+
+# .NET Core specific files
+project.lock.json
+project.fragment.lock.json
+project.nuget.cache
+project.nuget.cache.json
+*.runtimeconfig.json
+*.deps.json
