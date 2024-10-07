@@ -8,7 +8,6 @@ An e-commerce platform backend built using .NET Core, with MongoDB as the databa
 - **Vendor Management**: Manage vendor information.
 - **Product Management**: Add, update, delete, and retrieve products.
 - **Order Management**: Handle customer orders, including placing and tracking orders.
-- **Authentication**: JWT-based authentication for secure API access.
 - **MongoDB Integration**: Uses MongoDB for efficient storage and retrieval of e-commerce data.
 - **Error Handling**: Global exception handling for a robust API.
 - **Dashboard**: API to get total counts of customers, vendors, orders, and products.
@@ -17,7 +16,6 @@ An e-commerce platform backend built using .NET Core, with MongoDB as the databa
 
 - **Backend Framework**: ASP.NET Core
 - **Database**: MongoDB
-- **Authentication**: JWT (JSON Web Token)
 - **API Documentation**: Swagger
 - **Dependency Injection**: Built-in .NET Core DI
 
