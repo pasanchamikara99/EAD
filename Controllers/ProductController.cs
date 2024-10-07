@@ -129,5 +129,50 @@ namespace E_commerce_system.Controllers
         }
 
 
+        [HttpPut("approveProduct/{id}")]
+        public async Task<ActionResult> ApproveProduct(string id)
+        {
+            // Check if the product exists
+            var filter = Builders<Product>.Filter.Eq(x => x.Id, id);
+            var existingProduct = await _products.Find(filter).FirstOrDefaultAsync();
+
+            if (existingProduct == null)
+            {
+                return NotFound(new { message = "Product not found." });
+            }
+
+            // Create an update definition to set the Status to "Approve"
+            var update = Builders<Product>.Update.Set(x => x.Status, "Approve");
+
+            // Perform the update
+            await _products.UpdateOneAsync(filter, update);
+
+            return Ok(new { message = "Product status updated to 'Approve' successfully." });
+        }
+
+        [HttpPut("rejectProduct/{id}")]
+        public async Task<ActionResult> RejectProduct(string id)
+        {
+            // Check if the product exists
+            var filter = Builders<Product>.Filter.Eq(x => x.Id, id);
+            var existingProduct = await _products.Find(filter).FirstOrDefaultAsync();
+
+            if (existingProduct == null)
+            {
+                return NotFound(new { message = "Product not found." });
+            }
+
+            // Create an update definition to set the Status to "Approve"
+            var update = Builders<Product>.Update.Set(x => x.Status, "Reject");
+
+            // Perform the update
+            await _products.UpdateOneAsync(filter, update);
+
+            return Ok(new { message = "Product status updated to 'Reject' successfully." });
+        }
+
+
+
+
     }
 }

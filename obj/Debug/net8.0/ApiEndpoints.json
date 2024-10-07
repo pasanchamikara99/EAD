@@ -137,6 +137,22 @@
   },
   {
     "ContainingType": "E_commerce_system.Controllers.ProductController",
+    "Method": "ApproveProduct",
+    "RelativePath": "api/Product/approveProduct/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "E_commerce_system.Controllers.ProductController",
     "Method": "Delete",
     "RelativePath": "api/Product/deleteProduct/{id}",
     "HttpMethod": "DELETE",
@@ -222,6 +238,22 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "E_commerce_system.Controllers.ProductController",
+    "Method": "RejectProduct",
+    "RelativePath": "api/Product/rejectProduct/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "E_commerce_system.Controllers.ProductController",
