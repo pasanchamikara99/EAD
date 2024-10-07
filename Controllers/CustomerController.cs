@@ -86,5 +86,29 @@ namespace E_commerce_system.Controllers
             return Ok("Account has been deactivated.");
         }
 
+        [HttpPost("activate/{customerId}")]
+        public async Task<ActionResult> ActiveAccount(string customerId)
+        {
+            if (string.IsNullOrEmpty(customerId))
+            {
+                return BadRequest("Customer ID is required.");
+            }
+
+            // Find the customer by ID
+            var existingCustomer = await _customers.Find(c => c.Id == customerId).FirstOrDefaultAsync();
+
+            if (existingCustomer == null)
+            {
+                return NotFound("Customer not found.");
+            }
+
+
+            // Update the status to 'Active'
+            var update = Builders<Customer>.Update.Set(c => c.Status, "Active");
+            await _customers.UpdateOneAsync(c => c.Id == customerId, update);
+
+            return Ok("Account has been activated.");
+        }
+
     }
 }
