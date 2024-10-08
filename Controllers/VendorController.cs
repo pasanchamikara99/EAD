@@ -96,6 +96,13 @@ using E_commerce_system.Data.DTO;
 using Microsoft.AspNetCore.Authorization;
 using E_commerce_system.DTO;
 
+/*
+ * File: OrderController.cs
+ * Author: Amisha Prathyanga
+ * Purpose: Manages order operations including creating, retrieving, updating, canceling, marking as delivered or dispatched, 
+ *          and viewing orders by user or vendor. This controller facilitates the interaction between the client-side 
+ *          and the underlying order management services, ensuring smooth order processing and tracking.
+ */
 namespace E_commerce_system.Controllers
 {
     [ApiController]
@@ -109,6 +116,9 @@ namespace E_commerce_system.Controllers
             _vendorService = vendorService;
         }
 
+        // Method: GetAllVendors
+        // Purpose: Retrieves a list of all vendors from the database.
+        // Returns: A list of Vendor entities.
         [HttpGet]
         public async Task<ActionResult<List<Vendor>>> GetAllVendors()
         {
@@ -116,6 +126,10 @@ namespace E_commerce_system.Controllers
             return Ok(vendors);
         }
 
+        // Method: GetVendor
+        // Purpose: Retrieves a specific vendor by ID.
+        // Parameters: id - The ID of the vendor to retrieve.
+        // Returns: The requested Vendor entity or a 404 Not Found response if not found.
         [HttpGet("{id}")]
         public async Task<ActionResult<Vendor>> GetVendor(string id)
         {
@@ -125,6 +139,10 @@ namespace E_commerce_system.Controllers
             return Ok(vendor);
         }
 
+        // Method: CreateVendor
+        // Purpose: Creates a new vendor in the database.
+        // Parameters: vendorDto - The data transfer object containing vendor information.
+        // Returns: The created Vendor entity or a Bad Request response if the email is already in use.
         [HttpPost]
         //[Authorize(Roles = "Administrator")] // Commented out for testing
         public async Task<ActionResult<Vendor>> CreateVendor([FromBody] CreateVendorDTO vendorDto)
@@ -150,6 +168,10 @@ namespace E_commerce_system.Controllers
             return CreatedAtAction(nameof(GetVendor), new { id = createdVendor.Id }, createdVendor);
         }
 
+        // Method: AddRating
+        // Purpose: Adds a rating for a vendor from a customer.
+        // Parameters: vendorId - The ID of the vendor to rate; ratingDto - The rating information.
+        // Returns: A 200 OK response if successful; otherwise, a 404 Not Found response.
         [HttpPost("{vendorId}/ratings")]
         //[Authorize(Roles = "Customer")] // Commented out for testing
         public async Task<IActionResult> AddRating(string vendorId, [FromBody] VendorRatingDTO ratingDto)
@@ -168,6 +190,10 @@ namespace E_commerce_system.Controllers
             return Ok();
         }
 
+        // Method: GetVendorRatings
+        // Purpose: Retrieves all ratings for a specific vendor.
+        // Parameters: vendorId - The ID of the vendor to get ratings for.
+        // Returns: A list of VendorRating entities associated with the vendor
         [HttpGet("{vendorId}/ratings")]
         public async Task<ActionResult<List<VendorRating>>> GetVendorRatings(string vendorId)
         {
@@ -175,6 +201,10 @@ namespace E_commerce_system.Controllers
             return Ok(ratings);
         }
 
+        // Method: LoginVendor
+        // Purpose: Authenticates a vendor based on email and password.
+        // Parameters: vendorDto - The data transfer object containing login information.
+        // Returns: The authenticated Vendor entity or an error message if authentication fails.
         [HttpPost("login")]
         public async Task<ActionResult<Vendor>> LoginVendor([FromBody] LoginDTO vendorDto)
         {
@@ -196,6 +226,10 @@ namespace E_commerce_system.Controllers
             return Ok(vendor);
         }
 
+        // Method: VerifyPassword
+        // Purpose: Verifies the password for a vendor.
+        // Parameters: inputPassword - The password provided by the user; storedPassword - The hashed password stored in the database.
+        // Returns: True if the passwords match; otherwise, false.
         private bool VerifyPassword(string inputPassword, string storedPassword)
         {
             // Implement your password verification logic here

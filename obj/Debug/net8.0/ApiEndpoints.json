@@ -228,6 +228,32 @@
     ]
   },
   {
+    "ContainingType": "E_commerce_system.Controllers.NotificationController",
+    "Method": "GetByVendorId",
+    "RelativePath": "api/Notification/getbyvendor/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "E_commerce_system.Entities.Notification",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "E_commerce_system.Controllers.OrderController",
     "Method": "Get",
     "RelativePath": "api/Order",

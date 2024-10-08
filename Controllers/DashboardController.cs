@@ -5,6 +5,11 @@ using E_commerce_system.Entities;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
 
+/*
+ * File: DashboardController.cs
+ * Author: Pasan Chamikara
+ * Purpose: Manages dashboard operations for the admin, providing counts of orders, customers, products, and vendors.
+ */
 namespace E_commerce_system.Controllers
 {
     public class DashboardController : Controller
@@ -14,6 +19,7 @@ namespace E_commerce_system.Controllers
         private readonly IMongoCollection<Vendor>? _vendor;
         private readonly IMongoCollection<Product>? _product;
 
+        // Constructor: Initializes the controller with MongoDB collections for orders, customers, products, and vendors.
         public DashboardController(MongoDbService mongoDbService)
         {
             _orders = mongoDbService.Database?.GetCollection<Order>("order");
@@ -22,6 +28,9 @@ namespace E_commerce_system.Controllers
             _vendor = mongoDbService.Database?.GetCollection<Vendor>("Vendors");
         }
 
+        // Method: GetCounts
+        // Purpose: Retrieves the total counts of orders, customers, products, and vendors from the database.
+        // Returns: A JSON object containing the counts of each entity.
         [HttpGet("admin/dashboardcounts")]
         public async Task<IActionResult> GetCounts()
         {
