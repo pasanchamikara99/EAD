@@ -3,6 +3,12 @@ using E_commerce_system.Entities;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
 
+/*
+ * File: OrderController.cs
+ * Author: Pasindu Shyminda
+ * Purpose: Manages order operations including creating, retrieving, updating, canceling, marking as delivered or dispatched, 
+ *          and viewing orders by user or vendor.
+ */
 namespace E_commerce_system.Controllers
 {
     [Route("api/[controller]")]
