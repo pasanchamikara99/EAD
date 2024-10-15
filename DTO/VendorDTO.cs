@@ -14,7 +14,7 @@ namespace E_commerce_system.Data.DTO
         [Required]
         public string PhoneNumber { get; set; }
 
-        public string? Description { get; set; }
+        public string Description { get; set; }
 
         [Required]
         public string Password { get; set; }
