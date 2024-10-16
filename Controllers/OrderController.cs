@@ -1,4 +1,5 @@
-﻿using E_commerce_system.Data;
+﻿// This file contains the OrderController class which is responsible for handling all the HTTP requests related to the Order entity.
+using E_commerce_system.Data;
 using E_commerce_system.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -12,6 +13,7 @@ namespace E_commerce_system.Controllers
     {
         private readonly IMongoCollection<Order>? _orders;
 
+        //Constructor
         public OrderController(MongoDbService mongoDbService)
         {
             _orders = mongoDbService.Database?.GetCollection<Order>("order");
@@ -162,13 +164,20 @@ namespace E_commerce_system.Controllers
             return await _orders.Find(filter).ToListAsync();
         }
 
-        //View only specific vender orders
-        //[HttpGet("vendor/{vendorId}")]
-        //public async Task<IEnumerable<Order>> GetVendorOrders(string vendorId)
-        //{
-        //    var filter = Builders<Order>.Filter.Eq(x => x.OrderItems.Any(x => x.VendorId == vendorId));
-        //    return await _orders.Find(filter).ToListAsync();
-        //}
+        //View only specific vendor orders using vendorId
+        [HttpGet("vendor/{vendorId}")]
+        public async Task<IEnumerable<Order>> GetVendorOrders(string vendorId)
+        {
+            var filter = Builders<Order>.Filter.Eq(x => x.OrderItems[0].VendorId, vendorId);
+            var order = await _orders.Find(filter).FirstOrDefaultAsync();
+
+            if (order is null)
+            {
+                return null;
+            }
+            return await _orders.Find(filter).ToListAsync();
+        }   
+   
 
     }
 }

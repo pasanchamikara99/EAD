@@ -219,6 +219,32 @@
     ]
   },
   {
+    "ContainingType": "E_commerce_system.Controllers.OrderController",
+    "Method": "GetVendorOrders",
+    "RelativePath": "api/Order/vendor/{vendorId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "vendorId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[E_commerce_system.Entities.Order, E-commerce system, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "E_commerce_system.Controllers.ProductController",
     "Method": "Get",
     "RelativePath": "api/Product",

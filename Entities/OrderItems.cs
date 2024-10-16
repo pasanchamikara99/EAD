@@ -20,5 +20,9 @@ namespace E_commerce_system.Entities
         [BsonElement("price"), BsonRepresentation(BsonType.Double)]
         public Double Price { get; set; }
 
+        //Vendor Id
+        [BsonElement("vendor_id"), BsonRepresentation(BsonType.String)]
+        public string VendorId { get; set; }
+
     }
 }
