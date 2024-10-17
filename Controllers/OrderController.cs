@@ -29,16 +29,50 @@ namespace E_commerce_system.Controllers
             return await _orders.Find(FilterDefinition<Order>.Empty).ToListAsync();
         }
 
-        //Create Order
-        [HttpPost]
-        public async Task<ActionResult> Post(Order order)
-        {
-            //print order details
-            Console.WriteLine(order);
+       
+[HttpPost]
+public async Task<ActionResult> Post([FromBody] Order order)
+{
+    if (order == null)
+    {
+        return BadRequest("Invalid order data");
+    }
 
-            await _orders.InsertOneAsync(order);
-            return CreatedAtAction(nameof(GetById), new { id = order.Id }, order);
-        }
+    // Set the order date to the current time if not provided
+    if (order.OrderDate == default)
+    {
+        order.OrderDate = DateTime.UtcNow;
+    }
+
+    // Ensure OrderItems is not null
+    if (order.OrderItems == null)
+    {
+        order.OrderItems = new List<OrderItems>();
+    }
+
+    // Log the incoming order for debugging
+    Console.WriteLine($"Received order: {System.Text.Json.JsonSerializer.Serialize(order)}");
+
+    try
+    {
+        // Insert the order into the database
+        await _orders.InsertOneAsync(order);
+
+        // Retrieve the inserted order to include all details
+        var insertedOrder = await _orders.Find(o => o.Id == order.Id).FirstOrDefaultAsync();
+        
+        // Log the inserted order to check details
+        Console.WriteLine($"Inserted order: {System.Text.Json.JsonSerializer.Serialize(insertedOrder)}");
+
+        return CreatedAtAction(nameof(GetById), new { id = insertedOrder.Id }, insertedOrder);
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Error inserting order: {ex}");
+        return StatusCode(500, "An error occurred while processing your order");
+    }
+}
+
 
         //Get Order by Id
         [HttpGet("{id}")]

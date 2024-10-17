@@ -1,5 +1,8 @@
 using E_commerce_system.Data;
-using E_commerce_system.Data.Services; 
+using E_commerce_system.Data.Services;
+using E_commerce_system.Repositories;
+using MongoDB.Driver;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,10 +26,21 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<MongoDbService>();
 
+// Register IMongoDatabase to be injected from MongoDbService
+builder.Services.AddSingleton<IMongoDatabase>(sp =>
+{
+    var mongoDbService = sp.GetRequiredService<MongoDbService>();
+    return mongoDbService.Database;
+});
+
+// Register repositories
+builder.Services.AddScoped<ICartRepository, CartRepository>();
+
 builder.Services.AddScoped<IVendorService>(sp => {
     var mongoDbService = sp.GetRequiredService<MongoDbService>();
     return new VendorService(mongoDbService.Database);
 });
+
 
 var app = builder.Build();
 
