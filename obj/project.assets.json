@@ -1209,19 +1209,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Asus\\.nuget\\packages\\": {}
+    "C:\\Users\\USER\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\SLIIT\\4th Year\\2nd Sem\\EAD\\E-commerce system\\E-commerce system.csproj",
+      "projectUniqueName": "D:\\sliit\\4th_Year_2nd_Sem\\EAD\\EAD Project\\EAD\\E-commerce system.csproj",
       "projectName": "E-commerce system",
-      "projectPath": "E:\\SLIIT\\4th Year\\2nd Sem\\EAD\\E-commerce system\\E-commerce system.csproj",
-      "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
-      "outputPath": "E:\\SLIIT\\4th Year\\2nd Sem\\EAD\\E-commerce system\\obj\\",
+      "projectPath": "D:\\sliit\\4th_Year_2nd_Sem\\EAD\\EAD Project\\EAD\\E-commerce system.csproj",
+      "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
+      "outputPath": "D:\\sliit\\4th_Year_2nd_Sem\\EAD\\EAD Project\\EAD\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Asus\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1281,7 +1281,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

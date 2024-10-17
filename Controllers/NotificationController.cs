@@ -53,13 +53,32 @@ namespace E_commerce_system.Controllers
         // Purpose: Retrieves a notification by vendor ID.
         // Parameter: id - The ID of the vendor whose notifications are to be retrieved.
         // Returns: The notification if found, otherwise NotFound result.
+        // [HttpGet("getbyvendor/{id}")]
+        // public async Task<ActionResult<Notification?>> GetByVendorId(string id)
+        // {
+        //     // Create a filter to find notifications by vendor ID
+        //     var filter = Builders<Notification>.Filter.Eq(x => x.VendorId, id);
+        //     var notification = await _notification.Find(filter).FirstOrDefaultAsync();
+        //     return notification is not null ? Ok(notification) : NotFound();
+        // }
+
         [HttpGet("getbyvendor/{id}")]
-        public async Task<ActionResult<Notification?>> GetByVendorId(string id)
-        {
-            // Create a filter to find notifications by vendor ID
-            var filter = Builders<Notification>.Filter.Eq(x => x.VendorId, id);
-            var notification = await _notification.Find(filter).FirstOrDefaultAsync();
-            return notification is not null ? Ok(notification) : NotFound();
-        }
+            public async Task<ActionResult<List<Notification>>> GetByVendorId(string id)
+            {
+                // Create a filter to find notifications by vendor ID
+                var filter = Builders<Notification>.Filter.Eq(x => x.VendorId, id);
+                
+                // Retrieve all matching notifications
+                var notifications = await _notification.Find(filter).ToListAsync();
+
+                // Check if notifications are found
+                if (notifications.Count == 0)
+                {
+                    return NotFound(); // Return 404 if no notifications found
+                }
+
+                return Ok(notifications); // Return the list of notifications
+            }
+
     }
 }
