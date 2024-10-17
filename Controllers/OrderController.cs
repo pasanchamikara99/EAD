@@ -12,11 +12,13 @@ namespace E_commerce_system.Controllers
     public class OrderController : ControllerBase
     {
         private readonly IMongoCollection<Order>? _orders;
+        private readonly IMongoCollection<CustomerNotification>? _customerNotifications;
 
         //Constructor
         public OrderController(MongoDbService mongoDbService)
         {
             _orders = mongoDbService.Database?.GetCollection<Order>("order");
+            _customerNotifications = mongoDbService.Database?.GetCollection<CustomerNotification>("customerNotifications");
         }
 
         //Get all Orders
@@ -81,6 +83,23 @@ namespace E_commerce_system.Controllers
         {
             var filter = Builders<Order>.Filter.Eq(x => x.Id, id);
             var result = await _orders.DeleteOneAsync(filter);
+
+            //If order is deleted, add a notification to the customer
+            if (result.IsAcknowledged)
+            {
+                var order = await _orders.Find(filter).FirstOrDefaultAsync();
+                if (order is not null)
+                {
+                    var customerNotification = new CustomerNotification
+                    {
+                        CustomerId = order.UserId,
+                        OrderId = order.Id,
+                        Message = "Your order Tracking Number = " +id+ " has been deleted",
+                        //Timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds()
+                    };
+                    await _customerNotifications.InsertOneAsync(customerNotification);
+                }
+            }
             return result.IsAcknowledged ? Ok() : NotFound();
         }
 
@@ -104,8 +123,20 @@ namespace E_commerce_system.Controllers
             }
             var update = Builders<Order>.Update.Set(x => x.Status, "Cancelled");
             var result = await _orders.UpdateOneAsync(filter, update);
-            return result.IsAcknowledged ? Ok() : NotFound();
 
+            //If order is cancelled, add a notification to the customer
+            if (result.IsAcknowledged)
+            {
+                var customerNotification = new CustomerNotification
+                {
+                    CustomerId = order.UserId,
+                    OrderId = order.Id,
+                    Message = "Your order Tracking Number = " +id+ " has been cancelled",
+                    //Timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds()
+                };
+                await _customerNotifications.InsertOneAsync(customerNotification);
+            }
+            return result.IsAcknowledged ? Ok() : NotFound();
         }
 
         //Mark order as delivered
@@ -124,6 +155,19 @@ namespace E_commerce_system.Controllers
             }
             var update = Builders<Order>.Update.Set(x => x.Status, "Delivered");
             var result = await _orders.UpdateOneAsync(filter, update);
+
+            //If order is delivered, add a notification to the customer
+            if (result.IsAcknowledged)
+            {
+                var customerNotification = new CustomerNotification
+                {
+                    CustomerId = order.UserId,
+                    OrderId = order.Id,
+                    Message = "Your order Tracking Number = " +id+ " has been delivered",
+                    //Timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds()
+                };
+                await _customerNotifications.InsertOneAsync(customerNotification);
+            }
             return result.IsAcknowledged ? Ok() : NotFound();
         }
 
@@ -147,6 +191,19 @@ namespace E_commerce_system.Controllers
             }
             var update = Builders<Order>.Update.Set(x => x.Status, "Dispatched");
             var result = await _orders.UpdateOneAsync(filter, update);
+
+            //If order is dispatched, add a notification to the customer
+            if (result.IsAcknowledged)
+            {
+                var customerNotification = new CustomerNotification
+                {
+                    CustomerId = order.UserId,
+                    OrderId = order.Id,
+                    Message = "Your order Tracking Number = " +id+ " has been dispatched",
+                    //Timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds()
+                };
+                await _customerNotifications.InsertOneAsync(customerNotification);
+            }
             return result.IsAcknowledged ? Ok() : NotFound();
         }
 
@@ -168,16 +225,9 @@ namespace E_commerce_system.Controllers
         [HttpGet("vendor/{vendorId}")]
         public async Task<IEnumerable<Order>> GetVendorOrders(string vendorId)
         {
-            var filter = Builders<Order>.Filter.Eq(x => x.OrderItems[0].VendorId, vendorId);
-            var order = await _orders.Find(filter).FirstOrDefaultAsync();
-
-            if (order is null)
-            {
-                return null;
-            }
+            var filter = Builders<Order>.Filter.ElemMatch(x => x.OrderItems, item => item.VendorId == vendorId);
             return await _orders.Find(filter).ToListAsync();
-        }   
-   
+        }
 
     }
 }

@@ -46,6 +46,84 @@
     ]
   },
   {
+    "ContainingType": "E_commerce_system.Controllers.CustomerNotificationController",
+    "Method": "Get",
+    "RelativePath": "api/CustomerNotification",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[E_commerce_system.Entities.CustomerNotification, E-commerce system, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "E_commerce_system.Controllers.CustomerNotificationController",
+    "Method": "Post",
+    "RelativePath": "api/CustomerNotification",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "customerNotification",
+        "Type": "E_commerce_system.Entities.CustomerNotification",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "E_commerce_system.Controllers.CustomerNotificationController",
+    "Method": "GetById",
+    "RelativePath": "api/CustomerNotification/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "E_commerce_system.Entities.CustomerNotification",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "E_commerce_system.Controllers.CustomerNotificationController",
+    "Method": "Delete",
+    "RelativePath": "api/CustomerNotification/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "E_commerce_system.Controllers.OrderController",
     "Method": "Get",
     "RelativePath": "api/Order",
