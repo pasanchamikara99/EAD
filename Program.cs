@@ -18,29 +18,6 @@ builder.Services.AddCors(options =>
         });
 });
 
-// Add services to the container.
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowReactApp",
-        policy =>
-        {
-            policy.WithOrigins("http://localhost:3000") // Allow specific origin
-                  .AllowAnyHeader()
-                  .AllowAnyMethod();
-        });
-});
-
-// Add services to the container.
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowReactApp",
-        policy =>
-        {
-            policy.WithOrigins("http://localhost:3000") // Allow specific origin
-                  .AllowAnyHeader()
-                  .AllowAnyMethod();
-        });
-});
 
 // Add services to the container.
 builder.Services.AddControllers();
@@ -67,15 +44,6 @@ builder.Services.AddScoped<IVendorService>(sp => {
 
 var app = builder.Build();
 
-// Enable CORS for React app
-app.UseCors("AllowReactApp");
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
 
 // Enable CORS for React app
 app.UseCors("AllowReactApp");
