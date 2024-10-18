@@ -1,4 +1,5 @@
 ﻿using E_commerce_system.Data;
+using E_commerce_system.Data.Services;
 using E_commerce_system.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -18,11 +19,13 @@ namespace E_commerce_system.Controllers
     {
 
         private readonly IMongoCollection<Customer>? _customers;
+        private readonly EmailService _emailService;
 
 
-        public CustomerController(MongoDbService mongoDbService) {
+        public CustomerController(MongoDbService mongoDbService, EmailService emailService) {
 
             _customers = mongoDbService.Database?.GetCollection<Customer>("customer");
+            _emailService = emailService;
         }
 
 
@@ -139,6 +142,8 @@ namespace E_commerce_system.Controllers
             // Update the status to 'Active'
             var update = Builders<Customer>.Update.Set(c => c.Status, "Active");
             await _customers.UpdateOneAsync(c => c.Id == customerId, update);
+
+            _emailService.SendAccountActivationEmail(existingCustomer.Email, existingCustomer.CustomerName);
 
             return Ok("Account has been activated.");
         }
