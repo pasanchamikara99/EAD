@@ -28,6 +28,9 @@ builder.Services.AddScoped<IVendorService>(sp => {
     return new VendorService(mongoDbService.Database);
 });
 
+// Register EmailService in the DI container
+builder.Services.AddScoped<E_commerce_system.Data.Services.EmailService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
