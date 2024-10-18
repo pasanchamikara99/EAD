@@ -1,14 +1,10 @@
-﻿using E_commerce_system.Data;
+// This file contains the OrderController class which is responsible for handling all the HTTP requests related to the Order entity.
+using E_commerce_system.Data;
 using E_commerce_system.Entities;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
 
-/*
- * File: OrderController.cs
- * Author: Pasindu Shyminda
- * Purpose: Manages order operations including creating, retrieving, updating, canceling, marking as delivered or dispatched, 
- *          and viewing orders by user or vendor.
- */
 namespace E_commerce_system.Controllers
 {
     [Route("api/[controller]")]
@@ -16,10 +12,13 @@ namespace E_commerce_system.Controllers
     public class OrderController : ControllerBase
     {
         private readonly IMongoCollection<Order>? _orders;
+        private readonly IMongoCollection<CustomerNotification>? _customerNotifications;
 
+        //Constructor
         public OrderController(MongoDbService mongoDbService)
         {
             _orders = mongoDbService.Database?.GetCollection<Order>("order");
+            _customerNotifications = mongoDbService.Database?.GetCollection<CustomerNotification>("customerNotifications");
         }
 
         //Get all Orders
@@ -29,50 +28,16 @@ namespace E_commerce_system.Controllers
             return await _orders.Find(FilterDefinition<Order>.Empty).ToListAsync();
         }
 
-       
-[HttpPost]
-public async Task<ActionResult> Post([FromBody] Order order)
-{
-    if (order == null)
-    {
-        return BadRequest("Invalid order data");
-    }
+        //Create Order
+        [HttpPost]
+        public async Task<ActionResult> Post(Order order)
+        {
+            //print order details
+            Console.WriteLine(order);
 
-    // Set the order date to the current time if not provided
-    if (order.OrderDate == default)
-    {
-        order.OrderDate = DateTime.UtcNow;
-    }
-
-    // Ensure OrderItems is not null
-    if (order.OrderItems == null)
-    {
-        order.OrderItems = new List<OrderItems>();
-    }
-
-    // Log the incoming order for debugging
-    Console.WriteLine($"Received order: {System.Text.Json.JsonSerializer.Serialize(order)}");
-
-    try
-    {
-        // Insert the order into the database
-        await _orders.InsertOneAsync(order);
-
-        // Retrieve the inserted order to include all details
-        var insertedOrder = await _orders.Find(o => o.Id == order.Id).FirstOrDefaultAsync();
-        
-        // Log the inserted order to check details
-        Console.WriteLine($"Inserted order: {System.Text.Json.JsonSerializer.Serialize(insertedOrder)}");
-
-        return CreatedAtAction(nameof(GetById), new { id = insertedOrder.Id }, insertedOrder);
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine($"Error inserting order: {ex}");
-        return StatusCode(500, "An error occurred while processing your order");
-    }
-}
-
+            await _orders.InsertOneAsync(order);
+            return CreatedAtAction(nameof(GetById), new { id = order.Id }, order);
+        }
 
         //Get Order by Id
         [HttpGet("{id}")]
@@ -118,6 +83,23 @@ public async Task<ActionResult> Post([FromBody] Order order)
         {
             var filter = Builders<Order>.Filter.Eq(x => x.Id, id);
             var result = await _orders.DeleteOneAsync(filter);
+
+            //If order is deleted, add a notification to the customer
+            if (result.IsAcknowledged)
+            {
+                var order = await _orders.Find(filter).FirstOrDefaultAsync();
+                if (order is not null)
+                {
+                    var customerNotification = new CustomerNotification
+                    {
+                        CustomerId = order.UserId,
+                        OrderId = order.Id,
+                        Message = "Your order Tracking Number = " +id+ " has been deleted",
+                        //Timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds()
+                    };
+                    await _customerNotifications.InsertOneAsync(customerNotification);
+                }
+            }
             return result.IsAcknowledged ? Ok() : NotFound();
         }
 
@@ -141,8 +123,20 @@ public async Task<ActionResult> Post([FromBody] Order order)
             }
             var update = Builders<Order>.Update.Set(x => x.Status, "Cancelled");
             var result = await _orders.UpdateOneAsync(filter, update);
-            return result.IsAcknowledged ? Ok() : NotFound();
 
+            //If order is cancelled, add a notification to the customer
+            if (result.IsAcknowledged)
+            {
+                var customerNotification = new CustomerNotification
+                {
+                    CustomerId = order.UserId,
+                    OrderId = order.Id,
+                    Message = "Your order Tracking Number = " +id+ " has been cancelled",
+                    //Timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds()
+                };
+                await _customerNotifications.InsertOneAsync(customerNotification);
+            }
+            return result.IsAcknowledged ? Ok() : NotFound();
         }
 
         //Mark order as delivered
@@ -161,6 +155,19 @@ public async Task<ActionResult> Post([FromBody] Order order)
             }
             var update = Builders<Order>.Update.Set(x => x.Status, "Delivered");
             var result = await _orders.UpdateOneAsync(filter, update);
+
+            //If order is delivered, add a notification to the customer
+            if (result.IsAcknowledged)
+            {
+                var customerNotification = new CustomerNotification
+                {
+                    CustomerId = order.UserId,
+                    OrderId = order.Id,
+                    Message = "Your order Tracking Number = " +id+ " has been delivered",
+                    //Timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds()
+                };
+                await _customerNotifications.InsertOneAsync(customerNotification);
+            }
             return result.IsAcknowledged ? Ok() : NotFound();
         }
 
@@ -184,6 +191,19 @@ public async Task<ActionResult> Post([FromBody] Order order)
             }
             var update = Builders<Order>.Update.Set(x => x.Status, "Dispatched");
             var result = await _orders.UpdateOneAsync(filter, update);
+
+            //If order is dispatched, add a notification to the customer
+            if (result.IsAcknowledged)
+            {
+                var customerNotification = new CustomerNotification
+                {
+                    CustomerId = order.UserId,
+                    OrderId = order.Id,
+                    Message = "Your order Tracking Number = " +id+ " has been dispatched",
+                    //Timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds()
+                };
+                await _customerNotifications.InsertOneAsync(customerNotification);
+            }
             return result.IsAcknowledged ? Ok() : NotFound();
         }
 
@@ -201,13 +221,13 @@ public async Task<ActionResult> Post([FromBody] Order order)
             return await _orders.Find(filter).ToListAsync();
         }
 
-        //View only specific vender orders
-        //[HttpGet("vendor/{vendorId}")]
-        //public async Task<IEnumerable<Order>> GetVendorOrders(string vendorId)
-        //{
-        //    var filter = Builders<Order>.Filter.Eq(x => x.OrderItems.Any(x => x.VendorId == vendorId));
-        //    return await _orders.Find(filter).ToListAsync();
-        //}
+        //View only specific vendor orders using vendorId
+        [HttpGet("vendor/{vendorId}")]
+        public async Task<IEnumerable<Order>> GetVendorOrders(string vendorId)
+        {
+            var filter = Builders<Order>.Filter.ElemMatch(x => x.OrderItems, item => item.VendorId == vendorId);
+            return await _orders.Find(filter).ToListAsync();
+        }
 
     }
 }

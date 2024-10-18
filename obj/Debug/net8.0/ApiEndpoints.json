@@ -71,6 +71,7 @@
     "ContainingType": "E_commerce_system.Controllers.CustomerController",
     "Method": "Get",
     "RelativePath": "api/Customer/getAllcustomers",
+    "RelativePath": "api/Customer/getAllcustomers",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -105,15 +106,129 @@
   },
   {
     "ContainingType": "E_commerce_system.Controllers.CustomerController",
-    "Method": "Post",
-    "RelativePath": "api/Customer/register",
+    "Method": "Login",
+    "RelativePath": "api/Customer/login",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "customer",
-        "Type": "E_commerce_system.Entities.Customer",
+        "Name": "loginDTO",
+        "Type": "E_commerce_system.DTO.LoginDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "E_commerce_system.Controllers.CustomerNotificationController",
+    "Method": "Get",
+    "RelativePath": "api/CustomerNotification",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[E_commerce_system.Entities.CustomerNotification, E-commerce system, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "E_commerce_system.Controllers.CustomerNotificationController",
+    "Method": "Post",
+    "RelativePath": "api/CustomerNotification",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "customerNotification",
+        "Type": "E_commerce_system.Entities.CustomerNotification",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "E_commerce_system.Controllers.CustomerNotificationController",
+    "Method": "GetById",
+    "RelativePath": "api/CustomerNotification/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "E_commerce_system.Entities.CustomerNotification",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "E_commerce_system.Controllers.CustomerNotificationController",
+    "Method": "Delete",
+    "RelativePath": "api/CustomerNotification/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "E_commerce_system.Controllers.OrderController",
+    "Method": "Get",
+    "RelativePath": "api/Order",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[E_commerce_system.Entities.Order, E-commerce system, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "E_commerce_system.Controllers.OrderController",
+    "Method": "Post",
+    "RelativePath": "api/Order/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "order",
+        "Type": "E_commerce_system.Entities.Order",
         "IsRequired": true
       }
     ],
@@ -429,6 +544,68 @@
   {
     "ContainingType": "E_commerce_system.Controllers.ProductController",
     "Method": "GetById",
+    "RelativePath": "api/Customer/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "E_commerce_system.Entities.Customer",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "E_commerce_system.Controllers.ProductController",
+    "Method": "Get",
+    "RelativePath": "api/Product",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[E_commerce_system.Entities.Products, E-commerce system, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "E_commerce_system.Controllers.ProductController",
+    "Method": "Post",
+    "RelativePath": "api/Product",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "products",
+        "Type": "E_commerce_system.Entities.Products",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "E_commerce_system.Controllers.ProductController",
+    "Method": "GetById",
     "RelativePath": "api/Product/{id}",
     "HttpMethod": "GET",
     "IsController": true,
@@ -442,7 +619,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "E_commerce_system.Entities.Product",
+        "Type": "E_commerce_system.Entities.Products",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -453,31 +630,15 @@
     ]
   },
   {
-    "ContainingType": "E_commerce_system.Controllers.ProductController",
-    "Method": "Post",
-    "RelativePath": "api/Product/addProduct",
+    "ContainingType": "E_commerce_system.Controllers.CustomerController",
+    "Method": "DeactivateAccount",
+    "RelativePath": "deactivate/{customerId}",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "product",
-        "Type": "E_commerce_system.Entities.Product",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "E_commerce_system.Controllers.ProductController",
-    "Method": "ApproveProduct",
-    "RelativePath": "api/Product/approveProduct/{id}",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
+        "Name": "customerId",
         "Type": "System.String",
         "IsRequired": true
       }
@@ -485,294 +646,35 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "E_commerce_system.Controllers.ProductController",
-    "Method": "Delete",
-    "RelativePath": "api/Product/deleteProduct/{id}",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.String",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "E_commerce_system.Controllers.ProductController",
-    "Method": "Get",
-    "RelativePath": "api/Product/getAllProducts",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[E_commerce_system.Entities.Product, E-commerce system, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "E_commerce_system.Controllers.ProductController",
-    "Method": "GetProductsByCategory",
-    "RelativePath": "api/Product/productsByCategory/{category}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "category",
-        "Type": "System.String",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.List\u00601[[E_commerce_system.Entities.Product, E-commerce system, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "E_commerce_system.Controllers.ProductController",
-    "Method": "GetProductsByVendor",
-    "RelativePath": "api/Product/productsByVendor/{vendorId}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "vendorId",
-        "Type": "System.String",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.List\u00601[[E_commerce_system.Entities.Product, E-commerce system, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "E_commerce_system.Controllers.ProductController",
-    "Method": "RejectProduct",
-    "RelativePath": "api/Product/rejectProduct/{id}",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.String",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "E_commerce_system.Controllers.ProductController",
-    "Method": "Update",
-    "RelativePath": "api/Product/updateProduct/{id}",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.String",
-        "IsRequired": true
-      },
-      {
-        "Name": "updatedProduct",
-        "Type": "E_commerce_system.Entities.Product",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "E_commerce_system.Controllers.VendorController",
-    "Method": "GetAllVendors",
-    "RelativePath": "api/Vendor",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.List\u00601[[E_commerce_system.Data.Entities.Vendor, E-commerce system, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "E_commerce_system.Controllers.VendorController",
-    "Method": "CreateVendor",
-    "RelativePath": "api/Vendor",
+    "ContainingType": "E_commerce_system.Controllers.CustomerController",
+    "Method": "Login",
+    "RelativePath": "login",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "vendorDto",
-        "Type": "E_commerce_system.Data.DTO.CreateVendorDTO",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "E_commerce_system.Data.Entities.Vendor",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "E_commerce_system.Controllers.VendorController",
-    "Method": "GetVendor",
-    "RelativePath": "api/Vendor/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.String",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "E_commerce_system.Data.Entities.Vendor",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "E_commerce_system.Controllers.VendorController",
-    "Method": "AddRating",
-    "RelativePath": "api/Vendor/{vendorId}/ratings",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "vendorId",
-        "Type": "System.String",
-        "IsRequired": true
-      },
-      {
-        "Name": "ratingDto",
-        "Type": "E_commerce_system.Data.DTO.VendorRatingDTO",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "E_commerce_system.Controllers.VendorController",
-    "Method": "GetVendorRatings",
-    "RelativePath": "api/Vendor/{vendorId}/ratings",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "vendorId",
-        "Type": "System.String",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.List\u00601[[E_commerce_system.Data.Entities.VendorRating, E-commerce system, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "E_commerce_system.Controllers.VendorController",
-    "Method": "LoginVendor",
-    "RelativePath": "api/Vendor/login",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "vendorDto",
+        "Name": "loginDTO",
         "Type": "E_commerce_system.DTO.LoginDTO",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [
-      {
-        "Type": "E_commerce_system.Data.Entities.Vendor",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
+    "ReturnTypes": []
   },
   {
-    "ContainingType": "E_commerce_system.Controllers.WeatherForecastController",
-    "Method": "Get",
-    "RelativePath": "WeatherForecast",
-    "HttpMethod": "GET",
+    "ContainingType": "E_commerce_system.Controllers.CustomerController",
+    "Method": "Post",
+    "RelativePath": "register",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
+    "Parameters": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[E_commerce_system.WeatherForecast, E-commerce system, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
+        "Name": "customer",
+        "Type": "E_commerce_system.Entities.Customer",
+        "IsRequired": true
       }
     ],
-    "EndpointName": "GetWeatherForecast"
+    "ReturnTypes": []
   }
 ]

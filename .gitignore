@@ -1,3 +1,6 @@
+Controllers/ProductController.cs
+Entities/Products.cs
+
 # Ignore build outputs
 bin/
 obj/

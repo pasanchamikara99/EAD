@@ -20,7 +20,9 @@ namespace E_commerce_system.Controllers
         private readonly IMongoCollection<Customer>? _customers;
 
 
-        public CustomerController(MongoDbService mongoDbService) {
+
+        public CustomerController(MongoDbService mongoDbService)
+        {
 
             _customers = mongoDbService.Database?.GetCollection<Customer>("customer");
         }
@@ -41,22 +43,19 @@ namespace E_commerce_system.Controllers
         // Parameters: id - The unique identifier for the customer.
         // Returns: The customer object if found, otherwise NotFound.
         [HttpGet("{id}")]
-        public async Task<ActionResult<Customer?>> GetById(string id) 
+        public async Task<ActionResult<Customer?>> GetById(string id)
         {
             var filter = Builders<Customer>.Filter.Eq(x => x.Id, id);
             var customer = await _customers.Find(filter).FirstOrDefaultAsync();
             return customer is not null ? Ok(customer) : NotFound();
         }
 
-        // Method: Post (Register)
-        // Purpose: Registers a new customer. The customer's initial status is set to 'Inactive'.
-        // Parameters: customer - The customer object containing registration information.
-        // Returns: The newly created customer object.
-        [HttpPost("register")]
-        public async Task<ActionResult> Post(Customer customer) {
+        [HttpPost("/register")]
+        public async Task<ActionResult> Post(Customer customer)
+        {
             customer.Status = "InActive";
             await _customers.InsertOneAsync(customer);
-            return CreatedAtAction(nameof(GetById), new { id = customer.Id} , customer);
+            return CreatedAtAction(nameof(GetById), new { id = customer.Id }, customer);
         }
 
         // Method: Login

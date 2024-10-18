@@ -7,7 +7,7 @@ namespace E_commerce_system.Entities
     public class Customer
     {
         [BsonId]
-        [BsonElement("_id") , BsonRepresentation(BsonType.ObjectId)]
+        [BsonElement("_id"), BsonRepresentation(BsonType.ObjectId)]
         public string? Id { get; set; }
 
         [BsonElement("customer_name"), BsonRepresentation(BsonType.String)]
