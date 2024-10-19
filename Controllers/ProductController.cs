@@ -208,6 +208,26 @@ namespace E_commerce_system.Controllers
         }
 
 
+        [HttpGet("getapprovedproducts")]
+        public async Task<ActionResult<List<Product>>> GetApprovedProducts()
+        {
+
+            var filter = Builders<Product>.Filter.Eq(p => p.Status, "Approve");
+
+
+            var products = await _products.Find(filter).ToListAsync();
+
+
+            if (products == null || products.Count == 0)
+            {
+                return NotFound(new { message = "No products avaliable." });
+            }
+
+
+            return Ok(products);
+        }
+
+
 
 
     }

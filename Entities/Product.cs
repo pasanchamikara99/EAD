@@ -28,7 +28,7 @@ namespace E_commerce_system.Entities
         public string VendorId { get; set; }
 
         [BsonElement("vendor_name"), BsonRepresentation(BsonType.String)]
-        public string VendorName { get; set; }
+        public string? VendorName { get; set; }
 
         [BsonElement("status"), BsonRepresentation(BsonType.String)]
         public string Status { get; set; } = "Pending";
