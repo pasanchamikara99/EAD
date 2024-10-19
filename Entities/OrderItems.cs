@@ -22,7 +22,7 @@ namespace E_commerce_system.Entities
 
         //Vendor Id
         [BsonElement("vendor_id"), BsonRepresentation(BsonType.String)]
-        public string VendorId { get; set; }
+        public string? VendorId { get; set; }
 
     }
 }

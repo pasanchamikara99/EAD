@@ -1,4 +1,8 @@
 using E_commerce_system.Data;
+using E_commerce_system.Data.Services;
+using E_commerce_system.Repositories;
+using MongoDB.Driver;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +18,7 @@ builder.Services.AddCors(options =>
         });
 });
 
+
 // Add services to the container.
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -21,7 +26,24 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<MongoDbService>();
 
+// Register IMongoDatabase to be injected from MongoDbService
+builder.Services.AddSingleton<IMongoDatabase>(sp =>
+{
+    var mongoDbService = sp.GetRequiredService<MongoDbService>();
+    return mongoDbService.Database;
+});
+
+// Register repositories
+builder.Services.AddScoped<ICartRepository, CartRepository>();
+
+builder.Services.AddScoped<IVendorService>(sp => {
+    var mongoDbService = sp.GetRequiredService<MongoDbService>();
+    return new VendorService(mongoDbService.Database);
+});
+
+
 var app = builder.Build();
+
 
 // Enable CORS for React app
 app.UseCors("AllowReactApp");
@@ -32,6 +54,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
 
 app.UseHttpsRedirection();
 

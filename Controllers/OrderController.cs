@@ -1,4 +1,4 @@
-﻿// This file contains the OrderController class which is responsible for handling all the HTTP requests related to the Order entity.
+// This file contains the OrderController class which is responsible for handling all the HTTP requests related to the Order entity.
 using E_commerce_system.Data;
 using E_commerce_system.Entities;
 using Microsoft.AspNetCore.Http;
@@ -32,9 +32,6 @@ namespace E_commerce_system.Controllers
         [HttpPost]
         public async Task<ActionResult> Post(Order order)
         {
-            //print order details
-            Console.WriteLine(order);
-
             await _orders.InsertOneAsync(order);
             return CreatedAtAction(nameof(GetById), new { id = order.Id }, order);
         }

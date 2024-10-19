@@ -1,4 +1,4 @@
-﻿// This file contains the Order class which represents an order in the system. It contains the properties of an order and the list of order items in the order.
+// This file contains the Order class which represents an order in the system. It contains the properties of an order and the list of order items in the order.
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
